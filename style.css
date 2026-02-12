@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #1a0633, #2d0b5e, #4a0072);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 飘落的雪花效果 */
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+.snowflake {
+    position: absolute;
+    top: -20px;
+    color: white;
+    font-size: 24px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    animation: fall 8s infinite linear;
+    z-index: 1;
+}
+
+/* 主容器 */
+.container {
+    text-align: center;
+    z-index: 10;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(255, 165, 0, 0.3);
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+/* 新年标题 */
+.title {
+    font-size: clamp(2rem, 8vw, 5rem);
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff6b6b, #ffa500, #ffd700, #ff6b6b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 300% 300%;
+    animation: gradientShift 3s ease infinite;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 祝福语 */
+.blessing {
+    font-size: clamp(1rem, 4vw, 2rem);
+    color: white;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* 烟花按钮 */
+.fireworks-btn {
+    background: linear-gradient(45deg, #ff6b6b, #ffa500);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.6);
+    font-weight: bold;
+}
+
+.fireworks-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 165, 0, 0.8);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+        border-radius: 15px;
+    }
+    
+    .title {
+        font-size: clamp(1.5rem, 10vw, 3rem);
+    }
+    
+    .blessing {
+        font-size: clamp(0.9rem, 5vw, 1.5rem);
+    }
+}
+
+/* 烟花粒子效果 */
+.particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 20;
+}
+
+/* 年份显示 */
+.year {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: #ffd700;
+    margin-top: 1rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
